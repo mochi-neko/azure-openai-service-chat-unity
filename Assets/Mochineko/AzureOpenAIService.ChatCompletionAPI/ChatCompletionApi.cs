@@ -447,5 +447,3 @@ namespace Mochineko.AzureOpenAIService.ChatCompletionAPI
         }
     }
 }
-
-}
