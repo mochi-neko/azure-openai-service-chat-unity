@@ -226,6 +226,13 @@ namespace Mochineko.AzureOpenAIService.ChatCompletionAPI
                     .RetryWithTrace<IAsyncEnumerable<StreamingChatCompletions>>("Already cancelled.");
             }
 
+            if (options.Stream == null || !options.Stream.Value)
+            {
+                Log.Error("[AzureOpenAIService.ChatCompletion] StreamingChatCompletions.Stream must be true.");
+                return UncertainResults.FailWithTrace<IAsyncEnumerable<StreamingChatCompletions>>(
+                    "StreamingChatCompletions.Stream must be true.");
+            }
+
             Log.Debug("[AzureOpenAIService.ChatCompletion] Begin to complete chat.");
 
             // Create request message
